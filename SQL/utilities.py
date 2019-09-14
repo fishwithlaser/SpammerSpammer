@@ -1,21 +1,31 @@
 import sqlite3
 import os
 
+class BuildDb:
+    """
+    Ensures the user has the right databases built
 
-
-class buildDb:
-
-    def __init__():
+    """
+    def __init__(self):
         if 'SpammerSpammer.db' not in os.listdir('SQL'):
-            __make_db()
+            self.__make_db()
 
 
-    def __make_db():
-        conn=sqlite3.connect('SpammerSpammer.db')
+    def __make_db(self):
+        conn=sqlite3.connect(os.path.join('SQL','SpammerSpammer.db'))
         c = conn.cursor()
-        query='''CREATE TABLE numbers
-                 (name text, phonenumber text, imessage text, notes text)'''
+        query='''
+        CREATE TABLE "contact_info" (
+            "name"	text NOT NULL UNIQUE,
+            "phone_number"	text,
+            "imessage"	text,
+            "notes"	text,
+            "Field5"	NUMERIC,
+            PRIMARY KEY("name")
+        );'''
         c.execute(query)
         conn.commit()
-        c.close()
 
+
+if __name__ == "__main__":
+    print('TRY AGAIN lol')
