@@ -2,8 +2,8 @@
 
 This module is written so that you can spam a spammer. It has a few features:
 
-1. SQL db:
- a. stores people you want to message,
+1. SQL: <br>
+ a. stores people you want to message,<br>
  b. stores messages that you want to end
   
 2. MessageAPI that hijacks your phone and sends messages
