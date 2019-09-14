@@ -13,10 +13,12 @@ def add_number():
 	imessage=('imessage',input())
 	print('enter notes if any')
 	notes=('notes',input())
+	print('spammer? [1 or leave blank]')
+	spammer=('spammer', input())
 	#format to insert to SQL
 	SQL_col = []
 	SQL_val = []
-	for col, val in [name,number,imessage,notes]:
+	for col, val in [name,number,imessage,notes, spammer]:
 		if len(val) > 0:
 			SQL_col.append(col)
 			SQL_val.append(val)

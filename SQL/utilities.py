@@ -14,6 +14,19 @@ class BuildDb:
     def __make_db(self):
         conn=sqlite3.connect(os.path.join('SQL','SpammerSpammer.db'))
         c = conn.cursor()
+        #creates content table
+        query='''
+        CREATE TABLE "message_content" (
+            "machine_generated" bit,
+            "recieved" bit,
+            "owner" varchar(255),
+            "theme" varchar(255),
+            "content" text
+        )
+        
+        '''
+        c.execute(query)
+        # creates contact table
         query='''
         CREATE TABLE "contact_info" (
             "name"	text NOT NULL UNIQUE,
@@ -25,7 +38,6 @@ class BuildDb:
         );'''
         c.execute(query)
         conn.commit()
-
 
 if __name__ == "__main__":
     print('TRY AGAIN lol')
