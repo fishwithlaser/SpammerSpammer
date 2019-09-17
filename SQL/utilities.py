@@ -39,5 +39,13 @@ class BuildDb:
         c.execute(query)
         conn.commit()
 
+def open_connection():
+    """opens db if configured in this way __^ """
+   conn = sqlite3.connect(os.path.join('SQL','SpammerSpammer.db'))
+   c = conn.cursor()
+   return conn, c
+
+
+
 if __name__ == "__main__":
-    print('TRY AGAIN lol')
+    print('TRY AGAIN lol - thomas didnt actually write anything here..')
