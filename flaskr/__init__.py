@@ -2,6 +2,11 @@ import os
 
 from flask import Flask
 
+import sqlite3
+
+import click
+from flask import current_app, g
+from flask.cli import with_appcontext
 
 def create_app(test_config=None):
     # create and configure the app
@@ -28,5 +33,8 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    from . import auth
+    app.register_blueprint(auth.bp)
 
     return app
