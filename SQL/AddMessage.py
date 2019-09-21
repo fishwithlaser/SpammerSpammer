@@ -20,13 +20,13 @@ class AddMessage:
         c.commit()
         conn.close()
 
-
     @property
-    def message_add_add(self):
+    def message_add_add():
         import clipboard
         accepted='n'
         while accepted != 'y':
             message = clipboard.paste()
             print(message+'\n\n\n input the above message (stolen from your clipboard)? if so input y')
             accepted=input()
-        self.__add_message()
+        obj = AddMessage
+        AddMessage.__add_message()
