@@ -1,6 +1,8 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
-DROP TABLE IF EXISTS perm;
+DROP TABLE IF EXISTS permission;
+DROP TABLE IF EXISTS messages;
+
 
 
 CREATE TABLE user (
@@ -18,7 +20,18 @@ CREATE TABLE post (
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
-CREATE TABLE perm (
+CREATE TABLE permission (
   ID PRIMARY KEY,
+  FOREIGN KEY(author_id) REFERENCES messages (author_id),
   perm INT DEFAULT 0
 )
+
+CREATE TABLE messages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  number int DEFAULT NULL,
+  imessage TEXT DEFAULT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
