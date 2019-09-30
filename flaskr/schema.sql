@@ -2,13 +2,14 @@ DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS permission;
 DROP TABLE IF EXISTS messages;
-
-
+DROP TABLE IF EXISTS spammers;
+DROP TABLE IF EXISTS spam;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  email TEXT NOT NULL
 );
 
 CREATE TABLE post (
@@ -21,10 +22,10 @@ CREATE TABLE post (
 );
 
 CREATE TABLE permission (
-  ID PRIMARY KEY,
-  FOREIGN KEY(author_id) REFERENCES messages (author_id),
-  perm INT DEFAULT 0
-)
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  perm INT DEFAULT 0,
+  FOREIGN KEY (ID) REFERENCES messages (author_id)
+);
 
 CREATE TABLE messages (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,4 +35,18 @@ CREATE TABLE messages (
   imessage TEXT DEFAULT NULL,
   body TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
+);
+
+CREATE TABLE spammers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  notes TEXT  NULL
+);
+
+CREATE TABLE spam (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  message TEXT,
+  keywords TEXT,
+  notes TEXT
 );
