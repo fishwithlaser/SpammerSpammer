@@ -14,6 +14,7 @@ This module is written so that you can spam a spammer. It has a few features:
 
 ### Setup
 1.  `export FLASK_APP=flaskr`
+    - (helpful: `export FLASK_ENV=development`)
 2.  `flask init-db`
 3.  `flask run`
 
