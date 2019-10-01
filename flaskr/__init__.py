@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect
 
 import sqlite3
 
@@ -34,6 +34,10 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
+    @app.route('/thomas')
+    def thomas():
+        redirect('https:kosciuch.ca/catfacts')
+
     from . import auth
     app.register_blueprint(auth.bp)
 
@@ -42,6 +46,15 @@ def create_app(test_config=None):
 
     from . import blog
     app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
+    #app.add_url_rule('/', endpoint='index')
+
+    from . import spammer
+    app.register_blueprint(spammer.bp)
+    app.add_url_rule('/', endpoint='spammer/index')
 
     return app
+
+if __name__ == '__main__':
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

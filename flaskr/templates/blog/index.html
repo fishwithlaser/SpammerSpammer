@@ -6,8 +6,13 @@
     <a class="action" href="{{ url_for('blog.create') }}">New</a>
   {% endif %}
 {% endblock %}
-
 {% block content %}
+  <div>
+  <h1>zzzz - flask tutorial template - how boring.</h1>
+  <p> I should leave and go to a more exciting <a href="https://kosciuch.ca/catfacts">website</a>!</p>
+    <a class="action" href="{{ url_for('blog.message')}}">Edit</a>
+
+  </div>
   {% for post in posts %}
     <article class="post">
       <header>

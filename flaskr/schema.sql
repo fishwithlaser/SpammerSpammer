@@ -9,7 +9,8 @@ CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
-  email TEXT NOT NULL
+  email TEXT NULL,
+  notes TEXT
 );
 
 CREATE TABLE post (
@@ -39,9 +40,11 @@ CREATE TABLE messages (
 
 CREATE TABLE spammers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL,
-  notes TEXT  NULL
+  name TEXT UNIQUE NOT NULL,
+  number TEXT NULL,
+  imessage TEXT  NULL,
+  notes TEXT NULL,
+  spammer TEXT NULL
 );
 
 CREATE TABLE spam (

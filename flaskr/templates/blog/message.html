@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Message{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <label for="content">content:</label>
+      <input name="content" id="content" value="{{ request.form['content'] }}" required>
+      <label for="number">phone number</label>
+      <input name="number" id="number" value="{{ request.form['number'] }}">
+      <label for="imessage">imessage</label>
+      <input name="imessage" id="imessage" value="{{ request.form['imessage'] }}" >
+    <input type="submit" value="SEND!">
+  <form action="{{ url_for('blog.index')}}" method="post">
+{% endblock %}
+
+      def annoy():
+    if request.form['content']:
+        content=request.form['content']
+        error = 'Please enter a message'
+        flash(error)
+    if request.form['number']:
+        number = request.form['number']
+    elif request.form['imessage']:
+        request.form['imessage']
+        imessage = request.form['imessage']
+    else:
+        error = 'Please enter number or imessage'
+        flash(error)

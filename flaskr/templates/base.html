@@ -4,7 +4,8 @@
 <nav>
   <h1>Flaskr</h1>
   <ul>
-    <li><span>secret link</span></li>
+    <li><span><a href="{{ url_for('spammer.index')  }}">secret link</span>
+
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
